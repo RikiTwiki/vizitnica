@@ -1,6 +1,6 @@
 # Business Card
 
-Aplicativo desenvolvido no bootcamp Inter Android Developer em parceria com a [DIO](https://digitalinnovation.one/) / [Órbi Academy Techboost](https://orbi.co/academy/)
+Aplicativo desenvolvido no bootcamp Inter Android Developer em parceria com a [DIO](https://digitalinnovation.one/) / [Órbi Academy Techboost](https://digitalinnovation.one/tech-boost)
 
 ## Sobre o projeto
 
