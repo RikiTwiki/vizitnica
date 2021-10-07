@@ -16,12 +16,15 @@ Projeto de criação e compartilhamento de cartões de visita. Feito melhorias c
 - ROOM </br>
 - Color picker </br>
 
-
-      
+    
 
 
 
          
+
+
+https://user-images.githubusercontent.com/64696649/136436427-221dd7b6-d3b0-49f6-8c54-0a2871bd5ba4.mp4
+
 
 
 
