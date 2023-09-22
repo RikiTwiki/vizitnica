@@ -37,7 +37,7 @@ class AddBusinessCardActivity : AppCompatActivity() {
 
     private fun getExtra() {
         if (intent.hasExtra(TASK_ID)) {
-            binding.tvTitle.text = "Editar"
+            binding.tvTitle.text = "Редактировать"
             val cardId = intent.getIntExtra(TASK_ID, 0)
 
             mainViewModel.getCardById(cardId).let {
@@ -87,7 +87,7 @@ class AddBusinessCardActivity : AppCompatActivity() {
                 TextUtils.isEmpty(binding.tilEmail.editText?.text) ||
                 TextUtils.isEmpty(binding.tilCompany.editText?.text)
             ) {
-                Toast.makeText(this, "Todos os campos devem ser preenchidos!", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Все поля должны быть заполнены!", Toast.LENGTH_SHORT)
                     .show()
             } else {
                 val businessCard = BusinessCard(

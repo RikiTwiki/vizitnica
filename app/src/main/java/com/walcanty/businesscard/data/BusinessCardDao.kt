@@ -27,4 +27,8 @@ interface BusinessCardDao {
 
     @Query("SELECT * FROM BUSINESSCARD WHERE id = :id")
     suspend fun getCardById(id: Int): BusinessCard
+
+    @Query("SELECT * FROM BUSINESSCARD WHERE name LIKE :query")
+    fun searchCards(query: String): Flow<List<BusinessCard>>
+
 }

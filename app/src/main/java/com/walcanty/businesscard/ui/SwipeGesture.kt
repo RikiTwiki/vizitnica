@@ -17,8 +17,8 @@ abstract class SwipeGesture(context: Context) : ItemTouchHelper.SimpleCallback(0
     val updateteColor = ContextCompat.getColor(context, R.color.teal_700)
     val deleteicon = R.drawable.ic_baseline_delete_24
     val updateicon = R.drawable.ic_baseline_edit_24
-    val labelRight = "Editar"
-    val labelLeft = "Excluir"
+    val labelRight = "Редактировать"
+    val labelLeft = "Удалить"
 
     override fun onMove(
         recyclerView: RecyclerView,

@@ -8,16 +8,40 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import java.lang.IllegalArgumentException
 
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+
+
 class MainViewModel (private val businessCardRepository:BusinessCardRepository) :ViewModel(){
 
 //    fun insert(businessCard: BusinessCard){
 //        businessCardRepository.insert(businessCard)
 //    }
 
-    val allTasks: LiveData<List<BusinessCard>> = businessCardRepository.getAll.asLiveData()
+    private val _searchQuery = MutableLiveData<String>("")
+
+    val allTasks = MediatorLiveData<List<BusinessCard>>()
 
     private val tasksEventChannel = Channel<TasksEvent>()
     val tasksEvent = tasksEventChannel.receiveAsFlow()
+
+    init {
+        allTasks.addSource(_searchQuery) { query ->
+            if (query.isEmpty()) {
+                allTasks.addSource(businessCardRepository.getAll.asLiveData()) {
+                    allTasks.value = it
+                }
+            } else {
+                allTasks.addSource(businessCardRepository.searchCards(query).asLiveData()) {
+                    allTasks.value = it
+                }
+            }
+        }
+    }
+
+    fun setSearchQuery(query: String) {
+        _searchQuery.value = query
+    }
 
 
     fun insert(businessCard: BusinessCard) =viewModelScope.launch {
@@ -60,7 +84,7 @@ class MainViewModel (private val businessCardRepository:BusinessCardRepository) 
 
 class MainViewModelFactory(private val repository:BusinessCardRepository):
         ViewModelProvider.Factory{
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
        if (modelClass.isAssignableFrom(MainViewModel::class.java)){
            @Suppress("UNCHECKED_CAST")
            return MainViewModel(repository) as T

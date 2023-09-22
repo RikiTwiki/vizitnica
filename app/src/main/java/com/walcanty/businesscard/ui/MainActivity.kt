@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 //                        mainViewModel.delete(item)
                         Toasty.success(
                             this@MainActivity,
-                            "Cartão Excluido",
+                            "Удаленная карта",
                             Toast.LENGTH_SHORT,
                             true
                         ).show()
@@ -74,7 +76,23 @@ class MainActivity : AppCompatActivity() {
         val toucheHelper = ItemTouchHelper(swipeGesture)
         toucheHelper.attachToRecyclerView(binding.rvCards)
 
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
 
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterCards(newText ?: "")
+                return true
+            }
+        })
+
+    }
+
+    private fun filterCards(query: String) {
+        mainViewModel.allTasks.observe(this, { cards ->
+            adapter.submitList(cards.filter { it.name.contains(query, ignoreCase = true) })
+        })
     }
 
     private fun insertListener() {

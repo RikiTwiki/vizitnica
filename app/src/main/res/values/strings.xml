@@ -1,14 +1,14 @@
 <resources>
-    <string name="app_name">BusinessCard</string>
-    <string name="label_business_cards">Cartão de Visita</string>
-    <string name="label_description_new_card">Novo Cartão</string>
-    <string name="label_name">Nome</string>
-    <string name="label_phone">Telefone</string>
+    <string name="app_name">Визитница</string>
+    <string name="label_business_cards">Визитница</string>
+    <string name="label_description_new_card">Новая карта</string>
+    <string name="label_name">Название</string>
+    <string name="label_phone">Телефон</string>
     <string name="label_email">E-mail</string>
-    <string name="label_color">Cor</string>
-    <string name="label_confirm">Confirmar</string>
-    <string name="label_show_success">Cartão cadastrado com sucesso.</string>
-    <string name="label_show_update">Cartão atualizado com sucesso.</string>
-    <string name="label_share_to">Compartilhar</string>
-    <string name="labe_company">Empresa</string>
+    <string name="label_color">Тема</string>
+    <string name="label_confirm">Подтвердить</string>
+    <string name="label_show_success">Карта успешно зарегистрирована.</string>
+    <string name="label_show_update">Карта успешно обновлена.</string>
+    <string name="label_share_to">Поделиться</string>
+    <string name="labe_company">Компания</string>
 </resources>

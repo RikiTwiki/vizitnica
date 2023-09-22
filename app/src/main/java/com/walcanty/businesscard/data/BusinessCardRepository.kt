@@ -43,5 +43,9 @@ class BusinessCardRepository(private val dao:BusinessCardDao) {
 
     fun getCardById(cardId: Int) = runBlocking { dao.getCardById(cardId) }
 
+    fun searchCards(query: String): Flow<List<BusinessCard>> {
+        return dao.searchCards("%$query%")
+    }
+
 
 }
